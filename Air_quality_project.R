@@ -52,23 +52,24 @@ may_month<-airmo%>%filter(Month=="May")
 print(may_month)
 
 
-ggplot(may_month,aes(x=Day,y=Temp))+geom_line(group=1,color="skyblue",size=1)+
-  geom_point(color="red")+labs(Title="Temperature in the emonth of May",x="May",y="Temperature")+theme_minimal()
+ggplot(may_month,aes(x=as.factor(Day),y=Temp))+geom_line(group=1,color="skyblue",size=1)+
+  geom_point(color="red")+labs(x="Day in the month of May",y="Temperature")+theme_minimal()
 
 #Temperature in the month of June 
 june_month<-airmo%>%filter(airmo$Month=="June")
 june_month
 
 ggplot(june_month,aes(x=as.factor(Day),y=Temp))+
-  geom_point(color="blue")+labs(title="Temperature in the month of June",x="June",y="Temprature")+theme_minimal()+
+  geom_point(color="blue")+labs(x="Month of June",y="Temperature")+theme_minimal()+
   theme(axis.text.x=element_text(angle=45,hjust=1))
   
 
 #Temperature in July
-
-ggplot(july_month,aes(x=Day,y=Temp))+geom_line(group=1,color="black",size=1)+geom_point(color="blue")+
-  labs(title = "Temperature in July",y="Temperature")+theme_minimal()
-
+july_month<-airmo%>%filter(airmo$Month=="July")
+july_month
+  
+ggplot(july_month,aes(x=as.factor(Day),y=Temp))+geom_line(group=1,color="black",size=1)+geom_point(color="blue",size=3)+
+  labs(title = "Temperature in July",x="Day",y="Temperature")+theme_minimal()
 
 #Temperatur in September
 September_month<-airmo%>%filter(airmo$Month=="September")
@@ -77,6 +78,6 @@ September_month
 
 
 ggplot(September_month,aes(x=as.factor(Day),y=Temp))+geom_boxplot()+
-  labs(title="Temperature in September",x="",y="Temperature")+theme_minimal()+
+  labs(title="Temperature in September",x="Day",y="Temperature")+theme_minimal()+
   theme(axis.text.x=element_text(angle=45,hjust =1))
 
